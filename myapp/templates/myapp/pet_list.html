@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Listado Mascotas {% endblock %}
+{% block title_content %} Mascotas {% endblock %}
+{% block content %}
+    <ul>
+        {% for pet in lists %}
+            <li>{{ pet.0 }}</li>
+        {% endfor %}
+    </ul> 
+{% endblock %}

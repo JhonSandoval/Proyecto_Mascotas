@@ -1,0 +1,36 @@
+{% extends 'detalle.html' %}
+{% block title %} Detalle de masotas {% endblock %}
+{% block title_content %} Detalle de Mascotas {% endblock %}
+{% block content %}
+    {% if display == True %}
+        <div class="row">
+            <div class="col">
+                <img src="https://s7d2.scene7.com/is/image/PetSmart/WEB-1781754-May23_6TC1_ShopByPet_DT" class="img-fluid" alt="...">
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2" class="text-center"> {{ nombre }} - {{ dueno }} </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="col">Edad: </th>
+                            <td>{{ edad }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Especie: </th>
+                            <td>{{ especie }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No existen registros para mostrar
+        </div>
+    {% endif %}
+{% endblock %}

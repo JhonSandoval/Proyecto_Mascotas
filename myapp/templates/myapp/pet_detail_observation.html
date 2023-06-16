@@ -1,0 +1,81 @@
+{% extends 'detalle_observation.html' %}
+{% block title %} Detalle de masotas {% endblock %}
+{% block title_content %} Detalle de Mascotas {% endblock %}
+{% block content %}
+    {% if display == True %}
+        <div class="row">
+            <div class="col">
+                <img src="https://s7d2.scene7.com/is/image/PetSmart/WEB-1781754-May23_6TC1_ShopByPet_DT" class="img-fluid" alt="...">
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2" class="text-center"> {{ nombre }} - {{ dueno }} </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="col">Edad: </th>
+                            <td>{{ edad }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Especie: </th>
+                            <td>{{ especie }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No existen registros para mostrar
+        </div>
+    {% endif %}
+    {% endblock %}
+    
+{% if display_observation == True %}
+    {% block observation %}
+        <div class="alert alert-primary d-flex align-items-center" role="alert">
+            <!-- <svg class="bi flex-shrink-0 me-12" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg> -->
+            <div>
+                Estar pendiente a los cambios de temperatura, mantener hidratado, vacunas al día y desparacitación. 
+            </div>
+        </div>
+
+        <div class="accordion" id="accordionExample">
+            {% for o in observaciones %}
+                {% if forloop.counter == 1 %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Observacion # {{ forloop.counter }}
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
+                                {{ o.description }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Observacion # {{ forloop.counter }}
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
+                                {{ o.description }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endif %}

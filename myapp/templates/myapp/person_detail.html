@@ -1,0 +1,36 @@
+{% extends 'detalle.html' %}
+{% block title %} Detalle de personas {% endblock %}
+{% block title_content %} Detalle de personas {% endblock %}
+{% block content %}
+    {% if display == True %}
+        <a href="{% url 'app:persona-detail-mascotas' id %}">
+            ver mascotas
+        </a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col">Nickname: </th>
+                    <td>{{ nick_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Nombre persona: </th>
+                    <td>{{ nombre }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Edad: </th>
+                    <td>{{ edad }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No existen registros para mostrar
+        </div>
+    {% endif %}
+{% endblock %}
